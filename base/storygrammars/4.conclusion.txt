@@ -1,0 +1,18 @@
+{% set person1 = setting.get_theme() %}
+{% set location1 = setting.get_location() %}
+{% set time1 = setting.time %}
+{% set person2 = development.get_theme() %}
+{% set location2 = development.get_location() %}
+{% set time2 = development.time %}
+{% import "macros.txt" as describe with context %}
+
+{% block storyconclusion %}
+	{% block denouement %}
+		{{orth.sentence_cap(time.event_conjunction())}} {{describe.namedesc(person1)}} produced a {{exp.get_weapon()}} and 
+		threateningly began to advance upon {{describe.namedesc(person2)}}.
+	{% endblock %}
+	
+	{% block conclusion %}
+		{{orth.sentence_cap(time.flashforward_conjunction())}}, {{exp.get_media_expression()}} reported a murder.
+	{% endblock %}
+{% endblock %}

@@ -1,0 +1,18 @@
+{% set person1 = setting.get_theme() %}
+{% set location1 = setting.get_location() %}
+{% set time1 = setting.time %}
+{% import "macros.txt" as describe with context %}
+
+{% block storysetting %}
+	{% block timesetting %}
+		{{ time.time_expression(time1) }}
+	{% endblock %}
+
+	{% block characterintro %}
+		{{np.intro_describe(person1)}}
+	{% endblock %}
+	
+	{% block initialstate %}
+		was {{vc.present_participle(setting.verb)}} {{location1.preposition}} the {{location1.noun}}.
+	{% endblock %}
+{% endblock %}

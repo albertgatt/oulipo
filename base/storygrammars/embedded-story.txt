@@ -1,0 +1,43 @@
+{% extends "basic-story.txt" %}
+{% set person1 = setting.get_theme() %}
+{% set location1 = setting.get_location() %}
+{% set time1 = setting.time %}
+{% set person2 = development.get_theme() %}
+{% set location2 = development.get_location() %}
+{% set time2 = development.time %}
+{% import "macros.txt" as describe with context %}
+
+{% block storysetting %}
+	 {{ super() }}
+{% endblock %}
+
+{% block storydevelopment %}
+	{{super()}}
+	
+	{% block flashback %}
+		{% block flashbackconj %}
+			{{orth.sentence_cap(time.flashback_conjunction())}},
+		{% endblock %}
+		
+		{% block flashbackevent %}
+			{{describe.pronoundesc(person2)}} had {{vc.past_participle(flashback.verb)}} 
+			to inform {{describe.namedesc(person1)}} that {{describe.pronoundesc(person2)}} 
+			{{ describe.namedesc(flashback.get_utterance_arg())}}
+		{% endblock %}
+	{% endblock %}
+	
+	{% block switchback %}
+		{% block switchbackconj %}
+			{{orth.sentence_cap(time.switchback_conjunction())}},
+		{% endblock %}
+		
+		{% block substoryintro %}
+			{{describe.pronoundesc(person2)}} began to tell a story:
+		{% endblock %}
+	{% endblock %}
+	
+	{% block substory %}
+		{{substory}}
+	{% endblock %}
+	
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends 'oulipo/base.html' %}
+{% load staticfiles %}
+{% block body_block %}
+
+<div class="container" role="main">	
+	<h1 style='color:#ff0000'>Oulipo Story Generator</h1>
+
+	<form action="/oulipo/generate/" method="post" role="search" accept-charset="utf-8">
+			{% csrf_token %}
+
+		<div class="panel panel-default">
+			<div class="panel-heading">Define your characters</div>
+			<div class="panel-body">		
+						<div class="col-sm-6">
+							<h2 style='color:#800000'>Character 1</h2>
+							<div class="row">
+								<div class="col-sm-3">
+									<img class="img-responsive" src="{% static 'oulipo/img/woman.icon.png' %}" />
+									<div class="radio"><label><input type="radio" name="gender1" value="female">Female</input></label></div>
+								</div>
+								<div class="col-sm-3">
+									<img class="img-responsive" src="{% static 'oulipo/img/man.icon.png' %}" />
+									<div class="radio"><label></label><input type="radio" name="gender1" value="male">Male</input></label></div>
+								</div>
+							</div>
+							<div class="row">
+								<h5 style='color:#ff4000'>Choose physical characteristics</h5>
+								<div class="col-sm-3">									
+									<div class="radio"><label><input type="radio" name="girth1" value="thin">Thin</input></label></div>
+									<div class="radio"><label><input type="radio" name="girth1" value="fat">Fat</input></label></div>
+								</div>
+								<div class="col-sm-3">	
+									<div class="radio"><label><input type="radio" name="height1" value="tall">Tall</input></label></div>
+									<div class="radio"><label><input type="radio" name="height1" value="short">Short</input></label></div>
+								</div>	
+								<div class="col-sm-3">	
+									<div class="radio"><label><input type="radio" name="age1" value="young">Younger</input></label></div>
+									<div class="radio"><label><input type="radio" name="age1" value="old">Older</input></label></div>
+								</div>						
+							</div>
+						</div>	
+						
+						<div class="col-sm-6">
+							<h2 style='color:#800000'>Character 2</h2>
+							<div class="row">
+								<div class="col-sm-3">
+									<img class="img-responsive" src="{% static 'oulipo/img/woman.icon.png' %}" />
+									<div class="radio"><label></label><input type="radio" name="gender2" value="female">Female</input></label></div>
+								</div>
+								<div class="col-sm-3">
+									<img class="img-responsive" src="{% static 'oulipo/img/man.icon.png' %}" />
+									<div class="radio"><label></label><input type="radio" name="gender2" value="male">Male</input></label></div>
+								</div>
+							</div>
+							<div class="row">
+								<h5 style='color:#ff4000'>Choose physical characteristics</h5>
+								<div class="col-sm-3">									
+									<div class="radio"><label><input type="radio" name="girth2" value="thin">Thin</input></label></div>
+									<div class="radio"><label><input type="radio" name="girth2" value="fat">Fat</input></label></div>
+								</div>
+								<div class="col-sm-3">	
+									<div class="radio"><label><input type="radio" name="height2" value="tall">Tall</input></label></div>
+									<div class="radio"><label><input type="radio" name="height2" value="short">Short</input></label></div>
+								</div>				
+									<div class="col-sm-3">	
+									<div class="radio"><label><input type="radio" name="age2" value="young">Younger</input></label></div>
+									<div class="radio"><label><input type="radio" name="age" value="old">Older</input></label></div>
+								</div>			
+							</div>	
+					</div>	
+			</div>		
+		</div>
+		
+		
+		<div class="panel panel-default">
+			<div class="panel-heading">Choose the type of story</div>
+			<div class="panel-body">
+			<div class="radio"><label><input type="radio" name="subtemplate" value="yes">A story within a story.</input></label></div>
+			<div class="radio"><label><input type="radio" name="subtemplate" value="no">Just a simple story.</input></label></div>
+			</div>
+		</div>
+		
+		
+		<div class="panel panel-default">
+			<div class="panel-heading">Click the button below to generate</div>
+			<div class="panel-body">
+			<div class="input-group-btn">
+			      <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span></button>
+			    </div><!-- input-group-btn -->
+		  	  </div><!-- input-group -->
+		 </div>
+	</form>
+
+		
+</div>	
+
+{% endblock %}

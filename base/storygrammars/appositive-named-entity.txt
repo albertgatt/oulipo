@@ -1,0 +1,11 @@
+{% extends "named-entity.txt" %}
+{% set person = setting.get_theme() %}
+
+	{% block characterdescription %}
+		{{person.noun}}, a {{person.get_attribute_string()}} {{person.get_common_noun()}}
+		{% if person.gender == 'male' %}
+			in his fifties
+		{% else %}
+			in her fifties
+		{% endif %}
+	{% endblock %}

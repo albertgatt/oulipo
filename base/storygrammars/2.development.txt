@@ -1,0 +1,27 @@
+{% set person1 = setting.get_theme() %}
+{% set location1 = setting.get_location() %}
+{% set time1 = setting.time %}
+{% set person2 = development.get_theme() %}
+{% set location2 = development.get_location() %}
+{% set time2 = development.time %}
+{% import "macros.txt" as describe with context %}
+
+{% block storydevelopment %}
+	{% block temporalconj %}
+		{{orth.sentence_cap(time.event_conjunction())}},
+	{% endblock %}
+	
+	{% block newcharintro %}
+		{{np.name(person2)}}
+	{% endblock %}
+	
+	{% block development %}
+		{{vc.past_tense(development.verb)}} in.
+	{% endblock %}
+	
+	{% block newcharbackground %}
+		{{np.name(person2)}}
+		was
+		{{np.describe(person2)}}.
+	{% endblock %}
+{% endblock %}

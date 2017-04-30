@@ -1,0 +1,39 @@
+{% macro namedesc(person) %}
+    {{person.noun}}
+{% endmacro %}
+
+{% macro simpledesc(person) %}
+	{% set attstring = exp.get_synonym_adj(person.get_attribute('girth')) %}
+	{{art.indefinite_article(attstring)}} {{attstring}} {{person.get_common_noun()}}, 
+	who was also {{exp.get_qualifier()}} {{exp.get_synonym_adj(person.get_attribute('height'))}}. 
+{% endmacro %}
+
+
+{% macro appositivedesc(person) %}
+	{% set attstring = exp.get_synonym_adj(person.get_attribute('girth')) %}
+	{{person.noun}}, {{art.indefinite_article(attstring)}} {{exp.get_qualifier()}} {{attstring}} {{person.get_common_noun()}}
+		{% if person.gender == 'male' %}
+			in his fifties
+		{% else %}
+			in her fifties
+		{% endif %}
+{% endmacro %}
+
+
+
+{% macro pronoundesc(person) %}
+	{% if person.gender == 'male' %}
+		he
+	{% else %}
+		she
+	{% endif %}
+{% endmacro %}
+
+{% macro accpronoundesc(person) %}
+	{% if person.gender == 'male' %}
+		him
+	{% else %}
+		her
+	{% endif %}
+
+{% endmacro %}
