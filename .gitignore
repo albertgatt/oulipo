@@ -94,6 +94,7 @@ ENV/
 .sublime-workspace
 *.sublime-project
 *.sublime-workspace
+.idea/
 tmp/
 .DS_Store
 
